@@ -144,6 +144,7 @@ function converTemperature(temperature, scale) {
 
 
 console.log('Exercise 8 Result:', convertTemperature(32, "C"));
+
 /*
 Exercise 2: isAdult()
 
@@ -234,17 +235,15 @@ Example: maxOfThree(17, 4, 9) should return 17.
 
 Complete the exercise in the space below:
 */
-function maxOfThree(num1, num2, num3){
-    if (num1 > num2 ){
+function maxOfThree(num1, num2, num3) {
+    if (num1 >= num2 && num1 >= num3) {
         return num1;
-  } else if (num2 > num3){
-    return num2;
-  } else {
-    return num3;
-  }
-
+    } else if (num2 >= num1 && num2 >= num3) {
+        return num2;
+    } else {
+        return num3;
+    }
 }
-//i did not understand
 
 console.log('Exercise 6 Result:', maxOfThree(5, 10, 8));
 
@@ -281,12 +280,52 @@ Example: convertTemperature(32, 'F') should return 0 (Celsius).
 
 Complete the exercise in the space below:
 */
-function converTemperature(temperature, scale) {
-    if (scale === 'C'){
-        return 
+function convertTemperature(temperature, scale) {
+    if (scale === 'C') {
+        return (temperature * 9/5) + 32;
+    } else if (scale === 'F') {
+        return (temperature - 32) * 5/9;
+    } else {
+        return 'Invalid scale';
     }
 }
 
 
 
 console.log('Exercise 8 Result:', convertTemperature(32, "C"));
+
+/*
+Exercise 9: basicCalculator()
+
+Create a function named basicCalculator. 
+It should take three arguments: two numbers and a string representing 
+an operation ('add', 'subtract', 'multiply', 'divide'). 
+Perform the provided operation on the two numbers. 
+In operations where the order of numbers is important, 
+treat the first parameter as the first operand and the 
+second parameter as the second operand.
+
+Example: basicCalculator(10, 5, 'subtract') should return 5.
+
+Complete the exercise in the space below:
+*/
+function basicCalculator(num1, num2, operation) {
+    let result;
+    if (operation === "add") {
+        result = num1 + num2;
+    } else if (operation === "subtract") {
+        result = num1 - num2;
+    } else if (operation === "multiply") {
+        result = num1 * num2;
+    } else if (operation === "divide") {
+        if (num2 === 0) {
+            return 'Error: Division by zero';
+        }
+        result = num1 / num2;
+    } else {
+        return 'Invalid operation';
+    }
+    return result;
+}
+
+console.log('Exercise 9 Result:', basicCalculator(10, 5, "subtract"));
